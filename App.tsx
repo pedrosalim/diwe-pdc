@@ -1,10 +1,11 @@
 import React from "react";
 
-import { ThemeProvider } from "styled-components/native";
-import { NavigationContainer } from "@react-navigation/native";
-import AppRoutes from "./src/routes/auth.routes";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ThemeProvider } from "styled-components/native";
+import { Provider } from "react-redux";
 import AppLoading from "expo-app-loading";
+import { store } from "./src/store";
+import Routes from "./src/routes";
 
 import theme from "./src/global/styles/theme";
 
@@ -29,10 +30,10 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <AppRoutes />
+        <Routes />
       </ThemeProvider>
-    </NavigationContainer>
+    </Provider>
   );
 }

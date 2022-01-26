@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import contactsReducer from "./contacts";
 import authReducer from "./auth";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    contacts: contactsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

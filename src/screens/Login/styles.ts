@@ -1,11 +1,13 @@
 import styled from "styled-components/native";
 
+import { getBottomSpace } from "react-native-iphone-x-helper";
 import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex: 1;
 
   background-color: ${({ theme }) => theme.colors.background};
+  padding-bottom: ${getBottomSpace};
 `;
 
 export const TitlesWrapped = styled.View`
@@ -36,7 +38,14 @@ export const SubTitle = styled.Text`
   text-align: center;
 `;
 
-export const Form = styled.KeyboardAvoidingView``;
+export const Form = styled.KeyboardAvoidingView`
+  flex: 1;
+  justify-content: space-between;
+`;
+
+export const Wrapped = styled.View`
+  justify-content: space-between;
+`;
 
 export const FormGroup = styled.View`
   margin-bottom: 30px;
@@ -49,4 +58,12 @@ export const ForgotPasswordText = styled.Text`
   color: ${({ theme }) => theme.colors.secondary};
   justify-content: flex-end;
   margin-left: ${RFValue(150)}px;
+`;
+
+export const Footer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 19px;
 `;

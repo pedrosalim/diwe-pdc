@@ -15,7 +15,7 @@ const AppRoutes = () => {
       }}
     >
       <Stack.Screen
-        name="Home"
+        name="Dashboard"
         component={Dashboard}
         options={{ headerShown: false }}
       />
