@@ -30,8 +30,6 @@ const Login = () => {
 
   const { loading } = useAppSelector((state) => state.auth);
 
-  console.log("aqui loading", loading);
-
   return (
     <S.Container>
       <S.TitlesWrapped>

@@ -57,7 +57,9 @@ const EditContact = ({ contact }: ContactItemProps) => {
 
   return (
     <S.Container>
-      <S.Title>TESTE</S.Title>
+      <S.Title>
+        Faça as alterações necessárias e ao terminar salve seu contato
+      </S.Title>
       <Formik
         enableReinitialize
         initialValues={initialValues}

@@ -7,7 +7,7 @@ export const Container = styled.View`
   flex: 1;
 
   background-color: ${({ theme }) => theme.colors.background};
-  padding-bottom: ${getBottomSpace};
+  padding-bottom: 29px;
 `;
 
 export const TitlesWrapped = styled.View`
@@ -58,12 +58,4 @@ export const ForgotPasswordText = styled.Text`
   color: ${({ theme }) => theme.colors.secondary};
   justify-content: flex-end;
   margin-left: ${RFValue(150)}px;
-`;
-
-export const Footer = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-top: 19px;
 `;

@@ -1,13 +1,12 @@
 import styled from "styled-components/native";
 
-import { getBottomSpace } from "react-native-iphone-x-helper";
 import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex: 1;
 
   background-color: ${({ theme }) => theme.colors.background};
-  padding-bottom: ${getBottomSpace};
+  padding-bottom: 29px;
 `;
 
 export const Title = styled.Text`

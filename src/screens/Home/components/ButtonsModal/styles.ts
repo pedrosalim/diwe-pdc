@@ -9,7 +9,7 @@ export interface BackgroundProps {
 }
 
 export const Container = styled(TouchableOpacity)<BackgroundProps>`
-  padding: 13px;
+  padding: 10px;
 
   background-color: ${({ theme, type }) =>
     type === "color" ? theme.colors.attention : theme.colors.background};
