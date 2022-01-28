@@ -1,6 +1,5 @@
 import { RFValue } from "react-native-responsive-fontsize";
 import { css } from "styled-components/native";
-import { StyleSheet } from "react-native";
 
 export default {
   colors: {
@@ -22,11 +21,18 @@ export default {
     background_inputs: "#F1F3F5",
   },
 
+  borderGeneral: {
+    borderButton: () => css`
+      border: 1px solid ${({ theme }) => theme.colors.title};
+    `,
+  },
+
   fonts: {
     regular: "Montserrat_500Medium",
     medium: "Montserrat_600SemiBold",
     bold: "Montserrat_700Bold",
   },
+
   general: {
     input: () => css`
       font-size: ${RFValue(16)}px;

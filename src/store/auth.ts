@@ -26,9 +26,6 @@ export const login = createAsyncThunk(
         email,
         password,
       });
-      console.log(email, password);
-
-      console.log(data);
 
       api.defaults.headers.common.Authorization = `Bearer ${data.token}`;
 

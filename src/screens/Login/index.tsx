@@ -9,6 +9,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 
 import * as S from "./styles";
+import useAppSelector from "../../hooks/useAppSelector";
 
 interface FormProps {
   email: string;
@@ -26,6 +27,10 @@ const Login = () => {
   const SubmitForm = ({ email, password }: FormProps) => {
     dispatch(login({ email, password }));
   };
+
+  const { loading } = useAppSelector((state) => state.auth);
+
+  console.log("aqui loading", loading);
 
   return (
     <S.Container>
@@ -77,7 +82,12 @@ const Login = () => {
               </S.FormGroup>
             </S.Wrapped>
 
-            <Button testID="btn-login" title="Entrar" onPress={handleSubmit} />
+            <Button
+              testID="btn-login"
+              title="Entrar"
+              onPress={handleSubmit}
+              loading={loading}
+            />
           </S.Form>
         )}
       </Formik>

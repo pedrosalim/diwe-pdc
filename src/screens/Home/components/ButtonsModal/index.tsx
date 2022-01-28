@@ -6,15 +6,15 @@ import * as S from "./styles";
 
 interface Props extends TouchableOpacityProps {
   title: string;
-  loading?: boolean;
+  type: "transparent" | "color";
 }
 
-const Button = ({ title, loading, ...rest }: Props) => {
+const ButtonsModal = ({ title, type, ...rest }: Props) => {
   return (
-    <S.Container {...rest}>
-      {loading ? <S.Loading /> : <S.Title>{title}</S.Title>}
+    <S.Container type={type} {...rest}>
+      <S.Title type={type}>{title}</S.Title>
     </S.Container>
   );
 };
 
-export default Button;
+export default ButtonsModal;

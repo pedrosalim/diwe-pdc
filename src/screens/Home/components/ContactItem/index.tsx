@@ -6,16 +6,18 @@ import * as S from "./styles";
 
 interface ContactItemProps {
   contact: Contact;
+  onDelete: (id: number) => void;
+  onEdit: (id: number) => void;
 }
 
-const ContactItem = ({ contact }: ContactItemProps) => {
+const ContactItem = ({ contact, onDelete, onEdit }: ContactItemProps) => {
   return (
     <S.Container>
       <S.Header>
         <S.HeaderContent>
           <S.Name>{contact?.name}</S.Name>
         </S.HeaderContent>
-        <S.ButtonList>
+        <S.ButtonList onPress={() => onEdit(contact.id)}>
           <S.TextButton>Editar</S.TextButton>
         </S.ButtonList>
       </S.Header>
@@ -26,9 +28,12 @@ const ContactItem = ({ contact }: ContactItemProps) => {
           <S.Icon name="smartphone" />
           <S.Phone>{contact?.mobile}</S.Phone>
         </S.Datas>
-        <S.ButtonList>
+        <S.ButtonList onPress={() => onDelete(contact.id)}>
           <S.IconDelete name="trash-2" />
         </S.ButtonList>
+        {/* <S.ButtonList onPress={() => modal(contact.id)}>
+          <S.IconDelete name="trash-2" />
+        </S.ButtonList> */}
       </S.Footer>
     </S.Container>
   );

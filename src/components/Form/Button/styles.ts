@@ -1,9 +1,8 @@
 import styled from "styled-components/native";
 
 import { RFValue } from "react-native-responsive-fontsize";
-import { TouchableOpacity } from "react-native";
 
-export const Container = styled(TouchableOpacity)`
+export const Container = styled.TouchableOpacity`
   width: 90%;
   padding: 16px;
 
@@ -19,3 +18,8 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.tilte_buttons};
   font-size: ${RFValue(16)}px;
 `;
+
+export const Loading = styled.ActivityIndicator.attrs({
+  size: "small",
+  color: "white",
+})``;
