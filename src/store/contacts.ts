@@ -87,13 +87,18 @@ export const editSelector = (id: number) =>
 
 const initialState = {
   list: [] as Contact[],
+  success: false,
   loading: false,
 };
 
 const contacts = createSlice({
   name: "contacts",
   initialState,
-  reducers: {},
+  reducers: {
+    clearSuccess: (state) => {
+      state.success = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getContacts.pending, (state) => {
       state.loading = true;
@@ -109,9 +114,11 @@ const contacts = createSlice({
       state.loading = true;
     });
     builder.addCase(addContact.fulfilled, (state) => {
+      state.success = true;
       state.loading = true;
     });
     builder.addCase(addContact.rejected, (state) => {
+      state.success = false;
       state.loading = false;
     });
     builder.addCase(deleteContacts.pending, (state) => {
@@ -138,4 +145,5 @@ const contacts = createSlice({
   },
 });
 
+export const { clearSuccess } = contacts.actions;
 export default contacts.reducer;

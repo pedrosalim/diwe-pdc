@@ -2,6 +2,7 @@ import React from "react";
 
 import InputText from "../../components/Form/InputText";
 import { useNavigation } from "@react-navigation/native";
+import useAppSelector from "../../hooks/useAppSelector";
 import Button from "../../components/Form/Button";
 import { addContact } from "../../store/contacts";
 import { useAppDispatch } from "../../hooks";
@@ -23,6 +24,7 @@ const RegisterSchema = Yup.object().shape({
 
 const RegisterNewContact = () => {
   const dispatch = useAppDispatch();
+
   const navigation = useNavigation<any>();
 
   const SubmitForm = async (values: typeof initialValues) => {
@@ -32,7 +34,7 @@ const RegisterNewContact = () => {
         email: values.email,
         mobile: values.phone,
       };
-      await dispatch(addContact(formData));
+      await dispatch(addContact(formData)).unwrap();
       navigation.goBack();
     } catch (error) {}
   };

@@ -5,10 +5,11 @@ import React, {
   useState,
 } from "react";
 
-import contacts, {
+import {
   getContacts,
   deleteContacts,
   Contact,
+  clearSuccess,
 } from "../../store/contacts";
 import ButtonLogout from "../../components/Form/Button/ButtonLogout";
 import { useNavigation } from "@react-navigation/native";
@@ -16,6 +17,7 @@ import useAppSelector from "../../hooks/useAppSelector";
 import ContactItem from "./components/ContactItem";
 import ModalDelete from "./components/ModalDelete";
 import Button from "../../components/Form/Button";
+import Success from "../../components/Success";
 import { useAppDispatch } from "../../hooks";
 import { logout } from "../../store/auth";
 
@@ -32,7 +34,7 @@ const Home = ({ contact }: ModalUserCacheProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [id, setId] = useState<null | number>(null);
 
-  const { list } = useAppSelector((state) => state.contacts);
+  const { list, success } = useAppSelector((state) => state.contacts);
 
   const handleOpenModal = (id: number) => {
     setId(id);
@@ -71,6 +73,12 @@ const Home = ({ contact }: ModalUserCacheProps) => {
     dispatch(getContacts());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => dispatch(clearSuccess()), 3000);
+    }
+  }, [success]);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => <ButtonLogout onPress={handleLogout} />,
@@ -79,6 +87,7 @@ const Home = ({ contact }: ModalUserCacheProps) => {
 
   return (
     <S.Container>
+      {success && <Success title="Contato cadastrado com sucesso" />}
       <S.Header>
         <Button
           title="Cadastrar contato"
